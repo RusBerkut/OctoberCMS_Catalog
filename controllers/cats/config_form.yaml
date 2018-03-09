@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: radit.catalog::lang.catalog.category_name
+
+# Model Form Field configuration
+form: ~/plugins/radit/catalog/models/category/fields.yaml
+
+# Model Class name
+modelClass: Radit\catalog\Models\Category
+
+# Default redirect location
+defaultRedirect: radit/catalog/cats
+
+# Create page
+create:
+    title: radit.catalog::lang.catalog.category_create
+    redirect: radit/catalog/cats/update/:id
+    redirectClose: radit/catalog/cats
+
+# Update page
+update:
+    title: radit.catalog::lang.catalog.category_update
+    redirect: radit/catalog/cats
+    redirectClose: radit/catalog/cats
+
+# Preview page
+preview:
+    title: radit.catalog::lang.catalog.category_preview

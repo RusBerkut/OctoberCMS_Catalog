@@ -1,0 +1,44 @@
+{% set products = __SELF__.products %}
+{% set currencies = __SELF__.currencies %}
+{% set cproperties = __SELF__.catalog_properties %}
+{% set categories = __SELF__.product_categories %}
+
+{% for product in products %}
+<div class="catalog__tabs_product">
+    <div class="catalog__tabs_photo">
+        <img class="catalog__tabs_img" src="{{ product.featured_images.0.path | resize(378, 310)}}" alt="{{ product.name }}">
+        <!-- <div class="catalog__tabs_hit">
+            <p class="catalog__tabs_hit_text">Хит</p>
+        </div> -->
+        <a href=".popup_product" class="catalog__tabs_product_link"></a>
+    </div>
+    <div class="catalog__tabs_wrapp">
+        <p class="catalog__tabs_coast">от
+            <span class="catalog__tabs_coast_num catalog__tabs_coast_coast">
+                {% for currency in currencies %}
+                    {{(currency.value * product.price)|number_format(0, '.', ' ') }}
+                {% endfor %}
+            </span>
+            <span class="catalog__tabs_coast_currency">&#8381;</span> /
+            {% for prop_value in product.properties_values %}
+                {% if prop_value.properties_id == 1 %}
+                    <span class="catalog__tabs_coast_num catalog__tabs_coast_days">{{prop_value.value}}</span> {{decline(prop_value.value, ['день', 'дня', 'дней'])}}
+                {% endif %}
+            {% endfor %}
+        </p>
+        <a href=".popup_product" class="catalog__tabs_name">{{ product.name }}</a>
+        <p class="catalog__tabs_info">
+            {% for prop_value in product.properties_values %}
+                {% if prop_value.properties_id == 8 %}
+                    {% if prop_value.value != ''%}{{ prop_value.value }}{%else%}&nbsp;{%endif%}
+                {% endif %}
+            {% endfor %}
+        </p>
+
+        <div class="catalog__tabs_footer">
+            <a href=".popup_calc" class="catalog__tabs_btn catalog__tabs_btn-1" data-product="{{product.id}}">Рассчитать</a>
+            <a href=".popup_product" class="catalog__tabs_btn catalog__tabs_btn-2" data-product="{{product.id}}">Заказать</a>
+        </div>
+    </div>
+</div>
+{% endfor %}

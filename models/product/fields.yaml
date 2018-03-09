@@ -1,0 +1,170 @@
+tabs:
+    fields:
+        is_active:
+            label: Активность
+            type: switch
+            span: left
+            tab: Основное
+        name:
+            label: radit.catalog::lang.catalog.name
+            span: left
+            placeholder: radit.catalog::lang.catalog.name_placeholder
+            tab: Основное
+        categories:
+            label: Отображать в категориях
+            type: relation
+            nameFrom: title
+            span: right
+            tab: Основное
+        slug:
+            label: URL
+            preset:
+                field: name
+            span: left
+            tab: Основное
+        price:
+            label: radit.catalog::lang.catalog.price
+            span: left
+            tab: Основное
+        sorting:
+            label: Порядок
+            span: left
+            tab: Основное
+
+
+        short_description:
+            label: radit.catalog::lang.catalog.short_description
+            type: richeditor
+            span: left
+            tab: Описание
+        description:
+            label: radit.catalog::lang.catalog.description
+            type: richeditor
+            span: left
+            tab: Описание
+
+        featured_images:
+            label: radit.catalog::lang.catalog.featured_images
+            type: fileupload
+            mode: image
+            imageWidth: 200
+            imageHeight: 200
+            span: left
+            tab: Изображения
+
+        gallery_images:
+            label: Примеры работ
+            type: fileupload
+            mode: image
+            imageWidth: 200
+            imageHeight: 200
+            span: left
+            tab: Изображения
+
+        _properties_values:
+            type: editproperties
+            span: left
+            tab: Свойства товара
+
+        options:
+            type: repeater
+            prompt: Добавить параметр
+            form:
+                fields:
+                    option_name:
+                        label: Название
+                        type: text
+                    option_code:
+                        label: Код
+                        type: text
+                    base_value:
+                        label: Базовое значение
+                        type: text
+                    base_value_list:
+                        label: Базовое значение (список)
+                        type: repeater
+                        prompt: Добавить значение
+                        form:
+                            fields:
+                                value_name:
+                                    label: Имя значения
+                                    type: text
+                                value_value:
+                                    label: Значение
+                                    type: text
+                    charge_value:
+                        label: Наценка
+                        type: text
+                    charge_type:
+                        label: Тип наценки
+                        type: dropdown
+                        options:
+                            percent: %
+                            roubles: Руб.
+                    charge_step:
+                        label: Шаг
+                        type: text
+                    max_value:
+                        label: Максимальное значение
+                        type: text
+            tab: Калькулятор
+
+#        options:
+#            type: repeater
+#            prompt: Добавить вариант товара
+#            tab: Варианты товара
+#            form:
+#                fields:
+#                    option_articul:
+#                        label: Артикул
+#                        type: text
+#                        span: left
+#                    option_name:
+#                        label: Название варианта
+#                        type: text
+#                        span: right
+#                    option_price:
+#                        label: Цена
+#                        type: text
+#                        span: left
+#                    option_old_price:
+#                        label: Старая Цена
+#                        type: text
+#                        span: right
+#                    option_count:
+#                        label: Количество
+#                        type: text
+#                        span: left
+
+#        is_digital:
+#            label: Товар цифровой
+#            type: switch
+#            span: left
+#            tab: Цифровой товар
+#        digital_product:
+#            label: radit.catalog::lang.catalog.digital_product
+#            type: fileupload
+#            mode: file
+#            span: left
+#            tab: Цифровой товар
+
+        meta_title:
+            label: META Title
+            type: text
+            span: left
+            tab: МЕТА-данные
+        meta_description:
+            label: META Description
+            type: text
+            span: right
+            tab: МЕТА-данные
+        meta_keywords:
+            label: META Keywords
+            type: text
+            span: left
+            tab: МЕТА-данные
+        meta_h1:
+            label: META H1
+            type: text
+            span: right
+            tab: МЕТА-данные

@@ -1,0 +1,17 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: radit.catalog::lang.catalog.currency_name
+        type: text
+        searchable: true
+    value:
+        label: radit.catalog::lang.catalog.currency_value
+        type: text
+        searchable: true
+    is_default:
+        label: radit.catalog::lang.catalog.is_default
+        type: switch
+        searchable: true

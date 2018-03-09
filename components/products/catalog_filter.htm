@@ -1,0 +1,55 @@
+{% if category.slug == 'g-obraznye' or category.slug == 'p-obraznye' %}
+<form name="turn-type-form" id="turn-type-form" method="post">
+    <input type="hidden" name="page" value="{{products.currentPage}}">
+    <input type="hidden" name="category" value="{{category.id}}">
+<div class="type-stairs"{% if category %} style="margin-top: 0;" {% endif %}>
+    <div class="text-type-stairs">Показать только:</div>
+    <label class="text-type-stairs">
+        <input class="checkbox" type="checkbox" name="PROPERTY_TURN_TYPE[]" value="8">
+        <span class="checkbox-custom"></span>
+        <span class="label">С площадкой</span>
+    </label>
+    <label>
+        <input class="checkbox" type="checkbox" name="PROPERTY_TURN_TYPE[]" value="9">
+        <span class="checkbox-custom"></span>
+        <span class="label">С забежными ступенями</span>
+    </label>
+</div>
+</form>
+{% endif %}
+<script type="text/javascript">
+    $(function () {
+        $(document).on('ajaxSetup', function(event, context) {
+            // Enable AJAX handling of Flash messages on all AJAX requests
+            context.options.flash = true
+
+            // Enable the StripeLoadIndicator on all AJAX requests
+            context.options.loading = $.oc.stripeLoadIndicator
+
+            // Handle Error Messages by triggering a flashMsg of type error
+            context.options.handleErrorMessage = function(message) {
+                $.oc.flashMsg({ text: message, class: 'error' })
+            }
+
+            // Handle Flash Messages by triggering a flashMsg of the message type
+            context.options.handleFlashMessage = function(message, type) {
+                $.oc.flashMsg({ text: message, class: type })
+            }
+        })
+
+
+        $('#turn-type-form input').on('change', function () {
+           var _data = $('#turn-type-form').serializeArray();
+           $.request('onFilterSet', {
+               data: _data,
+               update: {
+                   'shopProducts::catalog_list_ajax_new':'#box-product',
+                   'shopProducts::pagination':'#pagination'
+               },
+               success: function () {
+                   $('.popup-2').magnificPopup({type:'inline'});
+               }
+           });
+        });
+    });
+</script>

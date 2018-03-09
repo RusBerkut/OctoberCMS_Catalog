@@ -1,0 +1,63 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Название
+        type: text
+        span: left
+
+    slug:
+        label: Код
+        type: text
+        span: right
+        preset:
+            field: name
+            type: slug
+
+tabs:
+    fields:
+        options:
+            type: repeater
+            prompt: Добавить параметр
+            form:
+                fields:
+                    option_name:
+                        label: Название
+                        type: text
+                    option_code:
+                        label: Код
+                        type: text
+                    base_value:
+                        label: Базовое значение
+                        type: text
+                    base_value_list:
+                        label: Базовое значение (список)
+                        type: repeater
+                        prompt: Добавить значение
+                        form:
+                            fields:
+                                value_name:
+                                    label: Имя значения
+                                    type: text
+                                value_value:
+                                    label: Значение
+                                    type: text
+                    charge_value:
+                        label: Наценка
+                        type: text
+                    charge_type:
+                        label: Тип наценки
+                        type: dropdown
+                        options:
+                            percent: %
+                            roubles: Руб.
+                            proporce: Пропорционально
+                    charge_step:
+                        label: Шаг
+                        type: text
+                    max_value:
+                        label: Максимальное значение
+                        type: text
+            tab: Параметры

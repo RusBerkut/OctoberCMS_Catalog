@@ -1,0 +1,117 @@
+
+<div class="box-product">
+    {% for product in products %}
+    <a href="#product-popup-{{product.id}}" class="product-2 popup-2">
+        <img height="197" src="{{ product.featured_images.0.path | resize(240, 197)}}">
+        <div class="name-product">{{ product.name }}</div>
+        <div class="type-product">
+            {% for prop_value in product.properties_values %}
+            {% if prop_value.properties_id == 8 %}
+            {% if prop_value.value != ''%}{{ prop_value.value }}{%else%}&nbsp;{%endif%}
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="price-time">
+            <div class="price">
+                {% for currency in currencies %}
+                {{currency.value * product.price }}
+                {% endfor %}
+                &#8381;
+            </div>
+            <div class="time">{{ product.properties_values[3].value }} дня</div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% partial __SELF__~"::pagination" %}
+{% for product in products %}
+<div id="product-popup-{{product.id}}" class="mfp-hide product-popup">
+    <div class="left-photo">
+        <div class="img-popup">
+            <!--<a href="#" class="left-img"></a>-->
+            <img src="{{ product.featured_images.0.path | resize(670, 550)}}" height="550">
+            <!--<a href="#" class="right-img"></a>-->
+        </div>
+        <div class="title-product-popup">
+            <span>{{product.name}}</span>
+            <span>
+                {% for prop_value in product.properties_values %}
+                    {% if prop_value.properties_id == 8 %}
+                        {{prop_value.value}}
+                    {% endif %}
+                {% endfor %}
+            </span>
+        </div>
+    </div>
+    <div class="right-order">
+        <div class="price-time">
+            <div class="price">
+                {% for currency in currencies %}
+                    {{(currency.value * product.price)|number_format(0, '.', ' ') }}
+                {% endfor %}
+                &#8381;
+            </div>
+            <div class="time">
+                {% for prop_value in product.properties_values %}
+                    {% if prop_value.properties_id == 1 %}
+                        {{prop_value.value}} {{decline(prop_value.value, ['день', 'дня', 'дней'])}}
+                    {% endif %}
+                {% endfor %}</div>
+        </div>
+        <div class="product-options">
+            <div class="line-options">
+                <span>Высота</span>
+                <span class="line-border"></span>
+                <span>
+                    {% for prop_value in product.properties_values %}
+                        {% if prop_value.properties_id == 4 %}
+                            до {{prop_value.value}} см
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="line-options">
+                <span>Ширина марша</span>
+                <span class="line-border"></span>
+                <span>
+                    {% for prop_value in product.properties_values %}
+                        {% if prop_value.properties_id == 5 %}
+                            до {{prop_value.value}} см
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="line-options">
+                <span>Арматура</span>
+                <span class="line-border"></span>
+                <span>
+                    {% for prop_value in product.properties_values %}
+                        {% if prop_value.properties_id == 6 %}
+                            {{prop_value.value}} &#216;
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="line-options">
+                <span>Бетон</span>
+                <span class="line-border"></span>
+                <span>
+                    {% for prop_value in product.properties_values %}
+                        {% if prop_value.properties_id == 7 %}
+                            {{prop_value.value}}
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+        <p style="text-align: right;"><a href="/product/{{product.slug}}">Подробнее</a></p>
+        <p>Каждая лестница индивидуальна <br> Оставьте заявку на точный расчет и бесплатный замер</p>
+        <form class="input-order">
+            <input type="hidden" name="messageblock" value="formblock">
+            <input type="name-text" id="fname" placeholder="Ваше имя">
+            <input type="tel2" id="fphone" placeholder="+7 (___) ___-__-__">
+            <button class="orange-button">Отправить</button>
+        </form>
+    </div>
+</div>
+{% endfor %}

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Калькулятор
+
+# Model Form Field configuration
+form: $/radit/catalog/models/calculator/fields.yaml
+
+# Model Class name
+modelClass: Radit\Catalog\Models\Calculator
+
+# Default redirect location
+defaultRedirect: radit/catalog/calculator
+
+# Create page
+create:
+    title: Новый калькулятор
+    redirect: radit/catalog/calculator/update/:id
+    redirectClose: radit/catalog/calculator
+
+# Update page
+update:
+    title: Редактировать калькулятор
+    redirect: radit/catalog/calculator
+    redirectClose: radit/catalog/calculator
+
+# Preview page
+preview:
+    title: Предпросмотр калькулятора

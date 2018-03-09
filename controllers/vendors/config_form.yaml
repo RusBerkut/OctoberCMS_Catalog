@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Производитель
+
+# Model Form Field configuration
+form: $/radit/catalog/models/vendor/fields.yaml
+
+# Model Class name
+modelClass: Radit\catalog\Models\Vendor
+
+# Default redirect location
+defaultRedirect: radit/catalog/vendors
+
+# Create page
+create:
+    title: Добавить производителя
+    redirect: radit/catalog/vendors/update/:id
+    redirectClose: radit/catalog/vendors
+
+# Update page
+update:
+    title: Редактировать производителя
+    redirect: radit/catalog/vendors
+    redirectClose: radit/catalog/vendors
+
+# Preview page
+preview:
+    title: Предпросмотр

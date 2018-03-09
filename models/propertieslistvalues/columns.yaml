@@ -1,0 +1,13 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    value:
+        label: Значение свойства
+        searchable: false
+
+    sorting:
+        label: Позиция
+        serchable: false
+        sortable: true

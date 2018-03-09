@@ -1,0 +1,69 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('radit/catalog/properties') ?>">Свойства</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <?= Form::open(['class' => 'layout']) ?>
+
+        <div class="layout-row">
+            <?= $this->formRender() ?>
+        </div>
+
+        <div class="form-buttons">
+            <div class="loading-indicator-container">
+                <button
+                    type="submit"
+                    data-request="onSave"
+                    data-hotkey="ctrl+s, cmd+s"
+                    data-load-indicator="Добавление свойства..."
+                    class="btn btn-primary">
+                    Добавить
+                </button>
+                <button
+                    type="button"
+                    data-request="onSave"
+                    data-request-data="close:1"
+                    data-hotkey="ctrl+enter, cmd+enter"
+                    data-load-indicator="Добавление свойства..."
+                    class="btn btn-default">
+                    Добавить и закрыть
+                </button>
+                <span class="btn-text">
+                    или <a href="<?= Backend::url('radit/catalog/properties') ?>">Отмена</a>
+                </span>
+            </div>
+        </div>
+
+    <?= Form::close() ?>
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= Backend::url('radit/catalog/properties') ?>" class="btn btn-default">Вернуться в список свойств</a></p>
+
+<?php endif ?>
+
+<script>
+    $(function () {
+        var _propType = $('#Form-field-Properties-type');
+        var _obj = $('#Form-field-Properties-properties_list_values-group');
+
+        $('#Form-outsideTabs').append('<div class="form-group span-left" id="prop-notices"></div>');
+
+        _obj.hide();
+
+        _propType.on('change', function (e) {
+            e.preventDefault();
+            if($(this).val() == 'S'){
+                $('#prop-notices').html('');
+            }else{
+                $('#prop-notices').html('Значения свойства типа "Список" можно добавить после сохранения свойства.');
+            }
+        });
+
+    });
+</script>

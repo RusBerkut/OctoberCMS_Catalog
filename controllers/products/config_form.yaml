@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Товар
+
+# Model Form Field configuration
+form: $/radit/catalog/models/product/fields.yaml
+
+# Model Class name
+modelClass: Radit\catalog\Models\Product
+
+# Default redirect location
+defaultRedirect: radit/catalog/products
+
+# Create page
+create:
+    title: Создать товар
+    redirect: radit/catalog/products/update/:id
+    redirectClose: radit/catalog/products
+
+# Update page
+update:
+    title: Редактировать товар
+    redirect: radit/catalog/products
+    redirectClose: radit/catalog/products
+
+# Preview page
+preview:
+    title: Предпросмотр товара

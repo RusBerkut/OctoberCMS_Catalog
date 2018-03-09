@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Свойства
+
+# Model Form Field configuration
+form: $/radit/catalog/models/properties/fields.yaml
+
+# Model Class name
+modelClass: Radit\catalog\Models\Properties
+
+# Default redirect location
+defaultRedirect: radit/catalog/properties
+
+# Create page
+create:
+    title: Добавить свойство
+    redirect: radit/catalog/properties/update/:id
+    redirectClose: radit/catalog/properties
+
+# Update page
+update:
+    title: Редактировать свойство
+    redirect: radit/catalog/properties
+    redirectClose: radit/catalog/properties
+
+# Preview page
+preview:
+    title: Предпросмотр

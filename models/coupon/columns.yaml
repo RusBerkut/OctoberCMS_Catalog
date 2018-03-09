@@ -1,0 +1,17 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    value:
+        label: radit.catalog::lang.catalog.value
+        type: text
+        searchable: true
+    discount:
+        label: radit.catalog::lang.catalog.discount
+        type: text
+        searchable: true
+    is_used:
+        label: radit.catalog::lang.catalog.is_used
+        type: switch
+        searchable: true

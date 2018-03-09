@@ -1,0 +1,14 @@
+subject = "Лицензия на программный продукт {{ user_name }}"
+==
+<p>Приветствую, Вас <b>{{ user_name }}</b> !</p>
+<p>Лицензия и поддержка на продукт {{ name }} {{ model }} выдана на <b>{{ user_email }} </b>.</p>
+</br>
+<p>Скачать <b>{{ name }} {{ model }}</b>:</p>
+<p>{{ digital_product.path | app }} :</p>
+</br>
+{% if additional is not empty %}
+<p><b>Дополнительная информация:</b></p>
+<p>{{ additional }}</p>
+{% endif %}
+<p>
+</p>

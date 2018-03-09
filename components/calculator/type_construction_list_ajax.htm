@@ -1,0 +1,14 @@
+<p class="popup_calc__cell_title">Тип конструкции
+    <span class="popup_calc__cell_icon">
+		<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+     </span>
+</p>
+<input type="text" id="type-construction" class="popup_calc__input popup_calc__input_text" value="{{parameters.base_product_type}}" name="type-construction">
+<span class="popup_calc__drop_menu"></span>
+<ul class="popup_calc__list">
+    {% for product in parameters.products %}
+    <li class="popup_calc__item">
+        <a href="" class="popup_calc__link">{{product.property_type}}</a>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,5 @@
+1.0.1: First version of Shop
+
+1.0.5:
+  - Added properties tables
+  - create_properties_table.php

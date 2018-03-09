@@ -1,0 +1,38 @@
+
+
+{% if products.lastPage > 1 %}
+{% if products.currentPage != products.lastPage %}
+<a href="javascript:void(0)"
+   onclick="loadMore($(this))"
+   data-request="onFilterSet"
+   data-request-data="category:'{{category.id}}',page:'{{products.currentPage+1}}'"
+   data-request-update="'{{ __SELF__ }}::catalog_list_ajax_new':'@.box-product','{{ __SELF__ }}::pagination':'#pagination'"
+   data-request-success="$('.popup-2').magnificPopup({type:'inline'});"
+   class="show-more-button">Показать еще</a>
+<div id="loaderImage" style="text-align:center;display:none;"></div>
+{% endif %}
+{% endif %}
+
+<nav class="navigation inline center">
+    {% if products.lastPage > 1 %}
+    <ul class="clearfix">
+
+        {% if products.currentPage > 1 %}
+        <li><a href="{{ paginationUrl ~ 1 }}" class="simple">В начало</a></li>
+        <li><a class="prev" href="{{ paginationUrl ~ (products.currentPage-1) }}"></a></li>
+        {% endif %}
+
+        {% for page in 1..products.lastPage %}
+
+        <li>
+            <a class="{{ page == products.lastPage and page == products.currentPage ? 'last ' : null }}{{ page == 1 ? 'first ' : null }}{{ products.currentPage == page ? 'active' : null }}"
+               href="{{ paginationUrl ~ page }}">{{ page }}</a>
+        </li>
+        {% endfor %}
+
+        {% if products.lastPage > products.currentPage %}
+        <li><a class="next" href="{{ paginationUrl ~ (products.currentPage+1) }}"></a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</nav>

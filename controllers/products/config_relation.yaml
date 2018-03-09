@@ -1,0 +1,11 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+_properties_values:
+    label: Значения свойств
+    view:
+        list: $/radit/catalog/models/propertiesvalues/columns.yaml
+    manage:
+        form: $/radit/catalog/models/propertiesvalues/fields.yaml
+        list: $/radit/catalog/models/propertiesvalues/columns.yaml

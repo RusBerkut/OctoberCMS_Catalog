@@ -1,0 +1,41 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    title:
+        label: Название свойства
+        span: left
+        type: text
+        placeholder: Введите название свойства...
+
+    code:
+        label: Код свойства
+        span: left
+        type: text
+        preset:
+            field: name
+            type: url
+
+    description:
+        label: Описание свойства
+        span: left
+        type: textarea
+        size: tiny
+
+    type:
+        label: Тип свойства
+        span: left
+        type: dropdown
+
+    sorting:
+        label: Сортировка
+        span: left
+        type: text
+
+    properties_list_values:
+        label: Значения свойства
+        span: left
+        type: partial
+        path: field_list_values

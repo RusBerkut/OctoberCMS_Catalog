@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Купон
+
+# Model Form Field configuration
+form: $/radit/catalog/models/coupon/fields.yaml
+
+# Model Class name
+modelClass: Radit\catalog\Models\Coupon
+
+# Default redirect location
+defaultRedirect: radit/catalog/coupons
+
+# Create page
+create:
+    title: Новый купон
+    redirect: radit/catalog/coupons/update/:id
+    redirectClose: radit/catalog/coupons
+
+# Update page
+update:
+    title: Редактировать купон
+    redirect: radit/catalog/coupons
+    redirectClose: radit/catalog/coupons
+
+# Preview page
+preview:
+    title: Preview Coupon

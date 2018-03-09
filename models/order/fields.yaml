@@ -1,0 +1,23 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    user_name:
+        label: radit.catalog::lang.catalog.user_name
+        span: left
+        placeholder: radit.catalog::lang.catalog.user_name_placeholder
+    email:
+        label: radit.catalog::lang.catalog.email
+        span: right
+        placeholder: radit.catalog::lang.catalog.email_placeholder
+    product_id:
+        label: radit.catalog::lang.catalog.product
+        span: left
+        type: dropdown
+        placeholder: radit.catalog::lang.catalog.product
+    coupon_id:
+        label: radit.catalog::lang.catalog.coupon
+        span: right
+        type: dropdown
+        placeholder: radit.catalog::lang.catalog.coupon

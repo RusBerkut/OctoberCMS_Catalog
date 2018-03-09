@@ -1,0 +1,25 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    value:
+        label: radit.catalog::lang.catalog.value
+        span: left
+        placeholder: radit.catalog::lang.catalog.value_placeholder
+    product_id:
+        label: radit.catalog::lang.catalog.product
+        span: right
+        type: dropdown
+        placeholder: radit.catalog::lang.catalog.product
+    discount:
+        label: radit.catalog::lang.catalog.discount
+        span: left
+        type: number
+        placeholder: radit.catalog::lang.catalog.discount_placeholder
+    is_used:
+        label: radit.catalog::lang.catalog.is_used
+        span: right
+        type: checkbox
+        default: false
+    

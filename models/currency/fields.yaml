@@ -1,0 +1,22 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: radit.catalog::lang.catalog.currency_name
+        span: left
+        placeholder: radit.catalog::lang.catalog.currency_name_placeholder
+    value:
+        label: radit.catalog::lang.catalog.currency_value
+        span: right
+        placeholder: radit.catalog::lang.catalog.currency_value_placeholder
+    sign:
+        label: radit.catalog::lang.catalog.currency_sign
+        span: left
+        placeholder: radit.catalog::lang.catalog.currency_sign_placeholder
+    is_default:
+        label: radit.catalog::lang.catalog.is_default
+        span: right
+        type: checkbox
+        default: false

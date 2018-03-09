@@ -1,0 +1,120 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    product_info:
+        label: radit.catalog::lang.catalog.product_main
+        type: section
+    name:
+        label: radit.catalog::lang.catalog.name
+        span: left
+        placeholder: radit.catalog::lang.catalog.name_placeholder
+    slug:
+        label: URL
+        preset:
+            field: name
+            type: url
+        span: right
+    model:
+        label: radit.catalog::lang.catalog.model
+        span: left
+        placeholder: radit.catalog::lang.catalog.model_placeholder
+    price:
+        label: radit.catalog::lang.catalog.price
+        span: right
+    articul:
+        label: Артикул
+        span: left
+    product_options:
+        label: radit.catalog::lang.catalog.product_options
+        type: section
+    options:
+        type: repeater
+        prompt: Добавить вариант товара
+        form:
+            fields:
+                option_articul:
+                    label: Артикул
+                    type: text
+                    span: left
+                option_name:
+                    label: Название варианта
+                    type: text
+                    span: right
+                option_price:
+                    label: Цена
+                    type: text
+                    span: left
+                option_old_price:
+                    label: Старая Цена
+                    type: text
+                    span: right
+                option_count:
+                    label: Количество
+                    type: text
+                    span: left
+    product_properties:
+        label: Свойства товара
+        type: section
+    properties_values:
+        label: Значения свойств
+        type: relation
+        nameFrom: title
+        span: left
+    product_taxonomy:
+        label: radit.catalog::lang.catalog.product_taxonomy
+        type: section
+    categories:
+        label: Отображать в категориях
+        type: relation
+        nameFrom: title
+        span: left
+    vendor:
+        label: Производитель
+        type: relation
+        nameFrom: name
+        span: right
+    product_active:
+        label: radit.catalog::lang.catalog.product_active
+        type: section
+    is_active:
+        label: Товар в продаже
+        type: switch
+        span: left
+    is_digital:
+        label: Товар цифровой
+        type: switch
+        span: right
+    digital_product:
+        label: radit.catalog::lang.catalog.digital_product
+        type: fileupload
+        mode: file
+        span: right
+    is_recommended:
+        label: Товар рекоменедуем
+        type: switch
+        span: left
+    available_at:
+        label: Будет доступен
+        type: datepicker
+        mode: datetime
+        span: left
+    product_additional:
+        label: radit.catalog::lang.catalog.product_additional
+        type: section
+    short_description:
+        label: radit.catalog::lang.catalog.short_description
+        type: richeditor
+        span: left
+    featured_images:
+        label: radit.catalog::lang.catalog.featured_images
+        type: fileupload
+        mode: image
+        imageWidth: 200
+        imageHeight: 200
+        span: right
+    description:
+        label: radit.catalog::lang.catalog.description
+        type: richeditor
+        span: left

@@ -1,0 +1,45 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    parent:
+        label: Родительская категория
+        type: relation
+        nameFrom: title
+        emptyOption: Без категории
+
+    title:
+        label: Название
+        span: left
+
+    slug:
+        label: Код
+        span: right
+        preset: title
+
+    description:
+        label: Текст
+        type: richeditor
+        size: huge
+        span: left
+
+    meta_title:
+        label: META Title
+        type: text
+        span: right
+
+    meta_description:
+        label: META Description
+        type: text
+        span: right
+
+    meta_keywords:
+        label: META Keywords
+        type: text
+        span: right
+
+    meta_h1:
+        label: META H1
+        type: text
+        span: right

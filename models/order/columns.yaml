@@ -1,0 +1,13 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    user_name:
+        label: radit.catalog::lang.catalog.user_name
+        type: text
+        searchable: true
+    email:
+        label: radit.catalog::lang.catalog.email
+        type: text
+        searchable: true

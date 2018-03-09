@@ -1,0 +1,27 @@
+<div class="layout-row">
+    <?foreach($properties AS $property):?>
+        <?=$property['title']?>: <br/>
+        <?if($property['type'] == 'L' && !empty($properties_list_values)):?>
+            <div class="form-group select-field">
+                <select class="form-control custom-select  select2-hidden-accessible" name="Product[properties_values][<?=$property['id']?>][value]">
+                    <option value="0">--- Не выбрано ---</option>
+                    <?foreach($properties_list_values[$property['id']] AS $listValue):?>
+                        <?if(isset($properties_values[$property['id']])):?>
+                            <option value="<?=$listValue['id']?>"<?=($listValue['id'] == $properties_values[$property['id']])?' selected':''?>><?=$listValue['value']?></option>
+                        <?else:?>
+                            <option value="<?=$listValue['id']?>"><?=$listValue['value']?></option>
+                        <?endif;?>
+                    <?endforeach;?>
+                </select>
+            </div>
+        <?endif;?>
+
+        <?if($property['type'] == 'S'):?>
+            <?if(isset($properties_values[$property['id']])):?>
+            <div class="form-group text-field"><input type="text" name="Product[properties_values][<?=$property['id']?>][value]" class="form-control" value="<?=$properties_values[$property['id']]?>"/></div>
+            <?else:?>
+    <div class="form-group text-field"><input type="text" name="Product[properties_values][<?=$property['id']?>][value]" class="form-control" value=""/></div>
+            <?endif;?>
+        <?endif;?>
+    <?endforeach;?>
+</div>

@@ -1,0 +1,19 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('radit/catalog/cats') ?>"><?= e(trans('radit.catalog::lang.catalog.category_name')) ?></a></li>
+        <li><?= e(trans($this->pageTitle)) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <div class="layout-item stretch layout-column">
+        <?= $this->formRenderPreview() ?>
+    </div>
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
+    <p><a href="<?= Backend::url('radit/catalog/cats') ?>" class="btn btn-default"><?= e(trans('radit.catalog::lang.catalog.category_returnlist')) ?></a></p>
+
+<?php endif ?>

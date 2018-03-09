@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Заказ
+
+# Model Form Field configuration
+form: $/radit/catalog/models/order/fields.yaml
+
+# Model Class name
+modelClass: Radit\catalog\Models\Order
+
+# Default redirect location
+defaultRedirect: radit/catalog/orders
+
+# Create page
+create:
+    title: Создать заказ
+    redirect: radit/catalog/orders/update/:id
+    redirectClose: radit/catalog/orders
+
+# Update page
+update:
+    title: Редактировать заказ
+    redirect: radit/catalog/orders
+    redirectClose: radit/catalog/orders
+
+# Preview page
+preview:
+    title: Preview Order

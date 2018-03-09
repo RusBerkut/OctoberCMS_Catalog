@@ -1,0 +1,149 @@
+{% set settings = __SELF__.settings %}
+{% set currencies = __SELF__.currencies %}
+{% set product = __SELF__.product %}
+{% set reviews = __SELF__.reviews %}
+{% set gallery = __SELF__.gallery %}
+{% set properties = __SELF__.product_properties %}
+
+<!--product section-->
+<h1 class="internal">{%if this.page.h1|length%}{{this.page.h1}}{%else%}{{this.page.title}}{%endif%}</h1>
+
+<section class="product-section-2">
+
+    <a href="" class="img-product">
+        <img width="400" src="{{ product.featured_images.0.path | resize(400, 328) }}" alt="{{product.name}}">
+    </a>
+    <div class="product-info">
+        <div class="guaranty">Гарантия 30 лет</div>
+        <div class="product-options">
+            <div class="line-options">
+                <span>Высота</span>
+                <span class="line-border"></span>
+                <span>
+                    {% for prop_value in product.properties_values %}
+                        {% if prop_value.properties_id == 4 %}
+                            до {{prop_value.value}} см
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="line-options">
+                <span>Ширина марша</span>
+                <span class="line-border"></span>
+                <span>
+                    {% for prop_value in product.properties_values %}
+                        {% if prop_value.properties_id == 5 %}
+                            до {{prop_value.value}} см
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="line-options">
+                <span>Арматура</span>
+                <span class="line-border"></span>
+                <span>
+                    {% for prop_value in product.properties_values %}
+                        {% if prop_value.properties_id == 6 %}
+                            {{prop_value.value}} &#216;
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+            <div class="line-options">
+                <span>Бетон</span>
+                <span class="line-border"></span>
+                <span>М350</span>
+            </div>
+        </div>
+        <div class="product-description">{{product.description|raw}}</div>
+    </div>
+    <div class="product-order">
+        <div class="price-time">
+            <div class="price">
+                {% for currency in currencies %}
+                    {{(currency.value * product.price)|number_format(0, '.', ' ') }}
+                {% endfor %}
+                &#8381;
+            </div>
+            <div class="time">
+                {% for prop_value in product.properties_values %}
+                    {% if prop_value.properties_id == 1 %}
+                        {{prop_value.value}} {{decline(prop_value.value, ['день', 'дня', 'дней'])}}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <p>Каждая лестница индивидуальна <br> Оставьте заявку на точный расчет и бесплатный замер</p>
+        {% component 'renderFormDetail2' %}
+    </div>
+</section>
+
+<!--steps line-->
+<section class="steps-line">
+    <h2>5 простых шагов работы с нами</h2>
+    <div class="line clearfix">
+        <div class="step item-1 left">Делаем необходимые замеры на объекте</div>
+        <div class="step item-2 left">Разрабатываем проекты лестницы на выбор</div>
+        <div class="step item-3 left">Заключаем договор и приступаем к работе</div>
+        <div class="step item-4 left">Ставим опалубку, вяжем арматуру и бетонируем</div>
+        <div class="step item-5 left">Снимаем опалубку и радуемся результатом</div>
+    </div>
+</section>
+<!--end steps line-->
+
+<!--Gallery start-->
+<section class="gallery">
+    <div class="title-line clearfix">
+        <h2 class="left">Некоторые готовые лестницы</h2>
+        <a href="/photo/" class="right">Все работы</a>
+    </div>
+    <div class="row clearfix">
+        {% for i in 0..7 %}
+        <a title="{{gallery.images[i].title}}" style="background-image:url('{{  gallery.images[i].path | resize(233, 193) }}');background-size:cover;width:233px;height:193px;" class="fancybox left" href="{{  gallery.images[i].path | resize(1024, 768, {watermark:true}) }}" data-fancybox-group="gallery1"></a>
+        {% endfor %}
+    </div>
+</section>
+<!--Gallery stop-->
+
+<!--banner item-2-->
+<div class="banner item-2">
+    <h2>Почему нас выбирают?</h2>
+    <ul class="special-list">
+        <li>Средний опыт наших мастеров 10 лет</li>
+        <li>Сухой закон на объекте - закон</li>
+        <li>Мастера имеют гражданство РФ</li>
+        <li>Соблюдение сроков - тоже обязанность</li>
+        <li>Наши мастера просто добрые люди</li>
+    </ul>
+</div>
+<!--end banner item-2-->
+
+<!--Reviews start-->
+{% if reviews %}
+<section class="video-section">
+    <div class="title-line clearfix">
+        <h2 class="left">Пара видео-отзывов наших клиентов</h2>
+        <a href="/reviews/" class="right">Все отзывы</a>
+    </div>
+    <div class="row clearfix">
+        {% for review in reviews %}
+        <div class="video{% if loop.index0 is odd %} right{% else %} left{% endif %}">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{review.video}}?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+<!--Reviews stop-->
+
+<!--order form-->
+<section class="order-form">
+    <h2>Мы бесплатно приедем на замер и разработаем варианты вашей будущей лестницы</h2>
+    {% component 'renderFormDetail' %}
+    <!--<form action="#" class="clearfix">
+        <input type="text" class="left" placeholder="Ваше имя" />
+        <input type="text" class="left" placeholder="Ваш телефон" />
+        <a href="javascript:void(0)" class="brown-button right">Вызвать мастера</a>
+    </form>-->
+</section>
+<!--end order form-->

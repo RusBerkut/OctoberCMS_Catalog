@@ -1,0 +1,92 @@
+<div class="portfolio">
+    <form method="post" id="wform" name="wform">
+        <div class="select-line clearfix">
+            <div class="box left clearfix">
+                <div class="title left">Вид лестницы:</div>
+                <div class="simple-select-box left">
+                    <select style="visibility:hidden;" multiple="multiple" name="type1[]" class="different chosen-select">
+                        <option value="208">Г-образная лестница с площадкой</option>
+                        <option value="210">Г-образная с забежными ступенями</option>
+                        <option value="207">Одномаршевая лестница</option>
+                        <option value="209">П-образная лестница с площадкой</option>
+                        <option value="237">П-образная с забежными ступенями</option>
+                        <option value="264">П-образная трехмаршевая</option>
+                    </select>
+                </div>
+            </div>
+            <div class="box left clearfix">
+                <div class="title left">Тип конструкции:</div>
+                <div class="simple-select-box left">
+                    <select style="visibility:hidden;"   multiple="multiple" name="type2[]"  class="different chosen-select">
+                        <option value="227">Гладко подшитая</option>
+                        <option value="230">Зеркальная</option>
+                        <option value="228">Косоурная</option>
+                        <option value="229">Тетивная</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <section class="gallery">
+        <div class="row clearfix">
+            {% for work in works.data %}
+            <!--Element start-->
+            <a itemscope="" itemtype="http://schema.org/ImageObject"
+               title="{{work.product_data.name}}"
+               style="background-image:url('{{ work.file_data.path | resize(233, 193) }}');background-size:cover;width:233px;height:193px;"
+               class="fancybox left"
+               href="{{ work.file_data.path | resize(1024, 600, {watermark: true})}}"
+               data-fancybox-group="gallery1">
+                <meta itemprop="name" content="{{work.product_data.name}}">
+                <meta itemprop="datePublished" content="2016-09-14 22:37:22">
+                <img src="{{ work.file_data.path | resize(233, 193) }}" style="display:none;" itemprop="contentUrl">
+            </a>
+            <!--Element stop-->
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    jQuery(function($){
+        $("select").not('.chosen-select').selectBoxIt();
+        $('select.chosen-select').multipleSelect({
+            minimumCountSelected:1,
+            countSelected:'Выбрано # из %',
+            width:300,
+            selectAllText:'Выбрать все',
+            allSelected:'Выбраны все',
+            maxHeight:300,
+            placeholder:'Все',
+            onUncheckAll:function(){
+                var _data = $('#wform').serialize();
+                $('#wform').request('onFilterSet', {
+                    data: {formdata: _data},
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+                //document.forms['wform'].submit();
+            },
+            onCheckAll:function(){
+                $('#wform').request('onFilterSet', {
+                    data: $('#wform').serialize(),
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+                //document.forms['wform'].submit();
+            },
+            onClick:function(){
+                $('#wform').request('onFilterSet', {
+                    data: $('#wform').serialize(),
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+                //document.forms['wform'].submit();
+            }
+        });
+    });
+</script>

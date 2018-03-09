@@ -1,0 +1,19 @@
+{% set breadcrumbs = __SELF__.breadcrumbs %}
+<div class="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">Главная</a>
+        </li>
+        {% for crumb in breadcrumbs %}
+            {% if crumb.active %}
+            <li class="active">
+                &nbsp;<span itemprop="name">{{crumb.title}}</span>
+            </li>
+            {% else %}
+            <li>
+                &nbsp;<a href="{{crumb.url}}">{{crumb.title}}</a>&nbsp;
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

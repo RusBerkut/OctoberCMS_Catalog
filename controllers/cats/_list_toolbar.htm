@@ -1,0 +1,26 @@
+<div data-control="toolbar">
+    <a
+        href="<?= Backend::url('radit/catalog/cats/create') ?>"
+        class="btn btn-primary oc-icon-plus">
+        <?= e(trans('radit.catalog::lang.catalog.new_cat')) ?>
+    </a>
+    <button
+        class="btn btn-default oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+            checked: $('.control-list').listWidget('getChecked')
+        })"
+        data-request="onDelete"
+        data-request-confirm="<?= e(trans('radit.catalog::lang.catalog.sure')) ?>"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator>
+        <?= e(trans('radit.catalog::lang.catalog.delete')) ?>
+    </button>
+    <a
+        href="<?= Backend::url('radit/catalog/cats/reorder') ?>"
+        class="btn btn-default oc-icon-bars">
+        <?= e(trans('radit.catalog::lang.catalog.manage')) ?>
+    </a>
+</div>

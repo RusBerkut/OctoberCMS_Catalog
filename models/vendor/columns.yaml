@@ -1,0 +1,11 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: Название
+        type: text
+    slug:
+        label: Код
+        type: text

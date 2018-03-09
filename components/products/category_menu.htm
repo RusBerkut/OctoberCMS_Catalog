@@ -1,0 +1,102 @@
+{% set category_list = __SELF__.product_categories %}
+<p>Вид лестницы:</p>
+<ul>
+    {% for categoryItem in category_list %}
+        {% if categoryItem.isActive %}
+            <li><a class="active" href="/monolitnie-lestnicy/{{categoryItem.slug}}/">{{categoryItem.title}}</a></li>
+        {% else %}
+            <li><span><a href="/monolitnie-lestnicy/{{categoryItem.slug}}/">{{categoryItem.title}}</a></span></li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<p>Тип конструкции:</p>
+<ul>
+    {% if viewBag.activeFilterType == 's-gladkim-dnom' %}
+        <li><a class="active" href="/monolitnie-lestnicy/s-gladkim-dnom/">С гладким дном</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/s-gladkim-dnom/">С гладким дном</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 's-zerkalnim-dnom' %}
+        <li><a class="active" href="/monolitnie-lestnicy/s-zerkalnim-dnom/">С зеркальным дном</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/s-zerkalnim-dnom/">С зеркальным дном</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'na-kosoure' %}
+        <li><a class="active" href="/monolitnie-lestnicy/na-kosoure/">На косоуре</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/na-kosoure/">На косоуре</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'na-tetive' %}
+        <li><a class="active" href="/monolitnie-lestnicy/na-tetive/">На тетиве</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/na-tetive/">На тетиве</a></span></li>
+    {% endif %}
+</ul>
+
+<p>Назначение:</p>
+<ul>
+    {% if viewBag.activeFilterType == 'v-chastnyj-dom' %}
+        <li><a class="active" href="/monolitnie-lestnicy/v-chastnyj-dom/">В частный дом</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/v-chastnyj-dom/">В частный дом</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'v-kottedzh' %}
+        <li><a class="active" href="/monolitnie-lestnicy/v-kottedzh/">В коттедж</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/v-kottedzh/">В коттедж</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'v-taunhaus' %}
+        <li><a class="active" href="/monolitnie-lestnicy/v-taunhaus/">В таунхаус</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/v-taunhaus/">В таунхаус</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'v-dupleks' %}
+        <li><a class="active" href="/monolitnie-lestnicy/v-dupleks/">В дуплекс</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/v-dupleks/">В дуплекс</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'v-kvartiru' %}
+        <li><a class="active" href="/monolitnie-lestnicy/v-kvartiru/">В квартиру</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/v-kvartiru/">В квартиру</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'dlya-dachi' %}
+        <li><a class="active" href="/monolitnie-lestnicy/dlya-dachi/">Для дачи</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/dlya-dachi/">Для дачи</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'dlya-bani' %}
+        <li><a class="active" href="/monolitnie-lestnicy/dlya-bani/">Для бани</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/dlya-bani/">Для бани</a></span></li>
+    {% endif %}
+</ul>
+<br>
+<ul>
+    {% if viewBag.activeFilterType == 'v-podval' %}
+        <li><a class="active" href="/monolitnie-lestnicy/v-podval/">В подвал</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/v-podval/">В подвал</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'na-vtoroj-etazh' %}
+        <li><a class="active" href="/monolitnie-lestnicy/na-vtoroj-etazh/">На второй этаж</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/na-vtoroj-etazh/">На второй этаж</a></span></li>
+    {% endif %}
+
+    {% if viewBag.activeFilterType == 'mezhetazhnye' %}
+        <li><a class="active" href="/monolitnie-lestnicy/mezhetazhnye/">Межэтажные</a></li>
+    {% else %}
+        <li><span><a href="/monolitnie-lestnicy/mezhetazhnye/">Межэтажные</a></span></li>
+    {% endif %}
+</ul>

@@ -1,0 +1,12 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    products_id:
+        type: text
+    properties_id:
+        type: text
+    value:
+        label: Значение
+        type: text

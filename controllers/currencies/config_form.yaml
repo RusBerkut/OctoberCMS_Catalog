@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Валюта
+
+# Model Form Field configuration
+form: $/radit/catalog/models/currency/fields.yaml
+
+# Model Class name
+modelClass: Radit\catalog\Models\Currency
+
+# Default redirect location
+defaultRedirect: radit/catalog/currencies
+
+# Create page
+create:
+    title: Новая валюта
+    redirect: radit/catalog/currencies/update/:id
+    redirectClose: radit/catalog/currencies
+
+# Update page
+update:
+    title: Редактировать валюту
+    redirect: radit/catalog/currencies
+    redirectClose: radit/catalog/currencies
+
+# Preview page
+preview:
+    title: Preview Currency

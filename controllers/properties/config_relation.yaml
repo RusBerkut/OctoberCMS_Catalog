@@ -1,0 +1,8 @@
+properties_list_values:
+    label: Значения свойства
+    view:
+        list: $/radit/catalog/models/propertieslistvalues/columns.yaml
+        toolbarButtons: create|delete
+    manage:
+        form: $/radit/catalog/models/propertieslistvalues/fields.yaml
+        list: $/radit/catalog/models/propertieslistvalues/columns.yaml

@@ -1,0 +1,12 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    value:
+        label: Значение
+        type: text
+
+    sorting:
+        label: Позиция
+        type: text

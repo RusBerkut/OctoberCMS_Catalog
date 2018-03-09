@@ -1,0 +1,148 @@
+{% set products = __SELF__.products %}
+{% set currencies = __SELF__.currencies %}
+{% set cproperties = __SELF__.catalog_properties %}
+{% set categories = __SELF__.product_categories %}
+<h1 class="internal">{%if this.page.h1%}{{this.page.h1}}{%else%}{{this.page.title}}{%endif%}</h1>
+<script src="{{ 'assets/js/preloader/canvas.js'|theme }}" type="text/javascript"></script>
+<section class="catalog-section" id="catalog-section">
+    <div class="left-content">
+        {% partial __SELF__~"::category_menu" %}
+    </div>
+
+    <div class="right-content">
+
+        {% partial __SELF__~"::catalog_filter" %}
+
+        <div id="catalog-content">
+            <div class="box-product" id="box-product">
+                {% for product in products %}
+                <a href="#product-popup-{{product.id}}" class="product-2 popup-2">
+                    <img height="197" src="{{ product.featured_images.0.path | resize(240, 197)}}">
+                    <div class="name-product">{{ product.name }}</div>
+                    <div class="type-product">
+                        {% for prop_value in product.properties_values %}
+                            {% if prop_value.properties_id == 8 %}
+                                {% if prop_value.value != ''%}{{ prop_value.value }}{%else%}&nbsp;{%endif%}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="price-time">
+                        <div class="price">
+                            {% for currency in currencies %}
+                                {{(currency.value * product.price)|number_format(0, '.', ' ') }}
+                            {% endfor %}
+                            &#8381;
+                        </div>
+                        <div class="time">
+                            {% for prop_value in product.properties_values %}
+                                {% if prop_value.properties_id == 1 %}
+                                    {{prop_value.value}} {{decline(prop_value.value, ['день', 'дня', 'дней'])}}
+                                {% endif %}
+                            {% endfor %}</div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            <div id="pagination">
+            {% partial __SELF__~"::pagination" %}
+            </div>
+
+            {% for product in products %}
+            <div id="product-popup-{{product.id}}" class="mfp-hide product-popup">
+                <div class="left-photo">
+                    <div class="img-popup">
+                        <!--<a href="#" class="left-img"></a>-->
+                        <img src="{{ product.featured_images.0.path | resize(670, 550) }}" height="550">
+                        <!--<a href="#" class="right-img"></a>-->
+                    </div>
+                    <div class="title-product-popup">
+                        <span>{{product.name}}</span>
+                        <span>
+                            {% for prop_value in product.properties_values %}
+                                {% if prop_value.properties_id == 8 %}
+                                    {{prop_value.value}}
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="right-order">
+                    <div class="price-time">
+                        <div class="price">
+                            {% for currency in currencies %}
+                                {{(currency.value * product.price)|number_format(0, '.', ' ') }}
+                            {% endfor %}
+                            &#8381;
+                        </div>
+                        <div class="time">
+                            {% for prop_value in product.properties_values %}
+                                {% if prop_value.properties_id == 1 %}
+                                    {{prop_value.value}} {{decline(prop_value.value, ['день', 'дня', 'дней'])}}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="product-options">
+                        <div class="line-options">
+                            <span>Высота</span>
+                            <span class="line-border"></span>
+                            <span>
+                                {% for prop_value in product.properties_values %}
+                                    {% if prop_value.properties_id == 4 %}
+                                        до {{prop_value.value}} см
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+                        </div>
+                        <div class="line-options">
+                            <span>Ширина марша</span>
+                            <span class="line-border"></span>
+                            <span>
+                                {% for prop_value in product.properties_values %}
+                                    {% if prop_value.properties_id == 5 %}
+                                        до {{prop_value.value}} см
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+                        </div>
+                        <div class="line-options">
+                            <span>Арматура</span>
+                            <span class="line-border"></span>
+                            <span>
+                                {% for prop_value in product.properties_values %}
+                                    {% if prop_value.properties_id == 6 %}
+                                        {{prop_value.value}} &#216;
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+                        </div>
+                        <div class="line-options">
+                            <span>Бетон</span>
+                            <span class="line-border"></span>
+                            <span>
+                                {% for prop_value in product.properties_values %}
+                                    {% if prop_value.properties_id == 7 %}
+                                        {{prop_value.value}}
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+                        </div>
+                    </div>
+                    <p style="text-align: right;"><a href="/product/{{product.slug}}">Подробнее</a></p>
+                    <p>Каждая лестница индивидуальна <br> Оставьте заявку на точный расчет и бесплатный замер</p>
+                    {% component 'renderFormPopups' %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    $(document).ready(function() {
+        $('.popup-2').magnificPopup({type:'inline'});
+    });
+</script>

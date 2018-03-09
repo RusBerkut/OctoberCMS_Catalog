@@ -1,0 +1,193 @@
+{% set parameters = __SELF__.parameters %}
+{% set categories = __SELF__.categories %}
+{% set calc_options = __SELF__.calc_options %}
+{% set base_product = __SELF__.base_product %}
+
+<!-- ************************************ -->
+<!-- ************************************ -->
+<!--            popup_calc                -->
+<!-- ************************************ -->
+<div class="popup_calc popup">
+    <form class="popup_calc__form" id="calc_form" action="" method="POST">
+        <p class="popup_calc__title">Предварительный рассчет стоимости лестницы</p>
+        <div class="popup_calc__content">
+
+            <div class="popup_calc__left">
+
+                <div class="popup_calc__left_row">
+                    <div class="popup_calc__cell popup_calc__height_stairs">
+                        <p class="popup_calc__cell_title">Высота лестницы, мм
+                            <span id="height-stairs-icon" class="popup_calc__cell_icon">
+								<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+							</span>
+                        </p>
+                        <input type="text" id="height-stairs" class="popup_calc__input popup_calc__input_number" value="3100" name="height">
+                    </div>
+
+                    <div class="popup_calc__cell popup_calc__width_march">
+                        <p class="popup_calc__cell_title">Ширина марша, мм
+                            <span class="popup_calc__cell_icon">
+								<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+                            </span>
+                        </p>
+                        <input type="text" id="width-march" class="popup_calc__input popup_calc__input_number"  name="width" value="1100">
+                    </div>
+                </div>
+
+
+                <div class="popup_calc__left_row">
+                    <div class="popup_calc__cell popup_calc__form_stairs">
+                        <p class="popup_calc__cell_title">Форма лестницы
+                            <span class="popup_calc__cell_icon">
+								<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+                            </span>
+                        </p>
+                        <input type="text" id="form-stairs" class="popup_calc__input popup_calc__input_text" placeholder="{{categories.index1.value}}" name="form-stairs">
+                        <span class="popup_calc__drop_menu"></span>
+                        <ul class="popup_calc__list">
+                            {% for key, category in categories %}
+                            <li class="popup_calc__item" data-value="{{key}}">
+                                <a href="" class="popup_calc__link">{{category}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="popup_calc__cell popup_calc__type-construction" id="type-construction__cont">
+                        <p class="popup_calc__cell_title">Тип конструкции
+                            <span class="popup_calc__cell_icon">
+								<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+                            </span>
+                        </p>
+                        <input type="text" id="type-construction" class="popup_calc__input popup_calc__input_text" value="{{parameters.base_product_type}}" name="type-construction">
+                        <span class="popup_calc__drop_menu"></span>
+                        <ul class="popup_calc__list">
+                            {% for product in parameters.products %}
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">{{product.property_type}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="popup_calc__left_row">
+                    <div class="popup_calc__cell popup_calc__adjoining_walls">
+                        <p class="popup_calc__cell_title">Премыкание стен
+                            <span class="popup_calc__cell_icon">
+								<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+                            </span>
+                        </p>
+                        <input type="text" id="adjoining-walls" class="popup_calc__input popup_calc__input_text" value="3 стены" name="adjoining walls">
+                        <span class="popup_calc__drop_menu"></span>
+                        <ul class="popup_calc__list">
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">3 стены</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">4 стены</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">5 стены</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="popup_calc__cell popup_calc__ceiling-type">
+                        <p class="popup_calc__cell_title">Тип перекрытия
+                            <span class="popup_calc__cell_icon">
+								<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+                            </span>
+                        </p>
+                        <input type="text" id="ceiling-type" class="popup_calc__input popup_calc__input_text" value="Монолитная плита" name="ceiling-type">
+                        <span class="popup_calc__drop_menu"></span>
+                        <ul class="popup_calc__list">
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Монолитная плита</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Монолитная плита 2</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Монолитная плита 3</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Монолитная плита 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="popup_calc__left_row">
+                    <div class="popup_calc__cell popup_calc__type_stages">
+                        <p class="popup_calc__cell_title">Тип ступеней
+                            <span class="popup_calc__cell_icon">
+								<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+                            </span>
+                        </p>
+                        <input type="text" id="type-stages" class="popup_calc__input popup_calc__input_text" value="Прямые" name="type-stages">
+                        <span class="popup_calc__drop_menu"></span>
+                        <ul class="popup_calc__list">
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Прямые</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Прямые 2</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Прямые 3</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Прямые 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="popup_calc__cell popup_calc__invitation-stage">
+                        <p class="popup_calc__cell_title">Пригласительные ступени
+                            <span class="popup_calc__cell_icon">
+								<span class="popup_calc__tooltip">Ширина марша - это размер ступени по ее ширине, блеать, все же просто и логично</span>
+                            </span>
+                        </p>
+                        <input type="text" id="invitation-stage" class="popup_calc__input popup_calc__input_text" value="Нет" name="invitation-stage">
+                        <span class="popup_calc__drop_menu"></span>
+                        <ul class="popup_calc__list">
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Нет</a>
+                            </li>
+                            <li class="popup_calc__item">
+                                <a href="" class="popup_calc__link">Да</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="popup_calc__column popup_calc__column-3">
+                <img src="{{'assets/img/catalog-product.png'|theme}}" alt="" class="popup_calc__img">
+            </div>
+        </div>
+        <p class="popup_calc__total">
+            <span class="popup_calc__total-mod">Итого: </span>
+            <span class="popup_calc__total_res" id="totalPrice">{{parameters.resultPrice|number_format(0, '.', ' ')}}</span>
+            <span class="popup_calc__total_currency">&#8381;</span> <br class="popup_calc__total_br">с учетом стоимости материалов
+        </p>
+        <p class="popup_calc__text">Уважаемые заказчики, обращаем ваше внимание, что данный рассчет среднестатистический и приближенный к реальному. Для точного расчета стоимости и разработки индивидуального проекта рекомендуем записаться на бесплатный замер.</p>
+        <p class="popup_calc__text" id="debug_data"></p>
+        <div class="popup_calc__footer">
+            <p class="popup_calc__footer_title">Заявка на замер</p>
+            <div class="popup_calc__footer_wrap">
+                <label class="popup_calc__footer_label">
+                    <input type="text" class="popup_calc__footer_input input-name" placeholder="Ваше имя">
+                    <span class="input__name_error">Введите имя</span>
+                </label>
+                <label class="popup_calc__footer_label">
+                    <input type="text" class="popup_calc__footer_input input-number" placeholder="Ваш телефон">
+                    <span class="input__number_error">Введите номер</span>
+                </label>
+                <input type="submit" class="popup_calc__footer_btn" value="Отправить">
+            </div>
+        </div>
+    </form>
+</div>
