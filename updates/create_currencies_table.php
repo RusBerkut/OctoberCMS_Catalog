@@ -1,4 +1,4 @@
-<?php namespace Radit\catalog\Updates;
+<?php namespace Radit\catalog\updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
