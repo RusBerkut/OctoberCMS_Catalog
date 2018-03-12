@@ -1,5 +1,5 @@
-October CMS Radit plugin. 
+October CMS Radit Catalog plugin. 
 ===================
-Плагин магазина October CMS. Позволяет реализовать интернет магазин на October CMS.
+Плагин каталога October CMS. Позволяет реализовать любой каталог на October CMS.
 
 Плагин в процессе разработки! Версия еще не рабочая.
